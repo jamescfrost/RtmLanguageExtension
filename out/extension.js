@@ -25,10 +25,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const path = __importStar(require("path"));
+const vscode = __importStar(require("vscode"));
 const node_1 = require("vscode-languageclient/node");
 let client;
 function activate(context) {
-    const serverDll = path.resolve(context.extensionPath, '..', 'RtmLanguageServer', 'src', 'RtmLanguageServer', 'bin', 'Debug', 'net8.0', 'RtmLanguageServer.dll');
+    const serverDll = path.resolve(context.extensionPath, '..', 'RtmLanguageServer', 'src', 'RtmLanguageServer', 'bin', 'Debug', 'net10.0', 'RtmLanguageServer.dll');
     const serverOptions = {
         command: 'dotnet',
         args: [serverDll]
@@ -37,6 +38,16 @@ function activate(context) {
         documentSelector: [{ scheme: 'file', language: 'rtm' }]
     };
     client = new node_1.LanguageClient('rtmLanguageServer', 'RTM Language Server', serverOptions, clientOptions);
+    const status = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+    status.name = "RTM Language Server";
+    status.text = "$(circle-outline) RTM";
+    status.show();
+    context.subscriptions.push(status);
+    client.onNotification("rtm/status", (payload) => {
+        const message = payload?.message ?? "RTM: Working";
+        status.text = `${payload?.busy ? "$(sync~spin)" : "$(check)"} ${message}`;
+        status.tooltip = message;
+    });
     client.start();
     context.subscriptions.push(client);
 }

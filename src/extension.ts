@@ -38,6 +38,19 @@ export function activate(context: vscode.ExtensionContext) {
     clientOptions
   );
 
+
+  const status = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+  status.name = "RTM Language Server";
+  status.text = "$(circle-outline) RTM";
+  status.show();
+  context.subscriptions.push(status);
+
+  client.onNotification("rtm/status", (payload: { message?: string; busy?: boolean }) => {
+    const message = payload?.message ?? "RTM: Working";
+    status.text = `${payload?.busy ? "$(sync~spin)" : "$(check)"} ${message}`;
+    status.tooltip = message;
+  });
+
   client.start();
   context.subscriptions.push(client);
 }
