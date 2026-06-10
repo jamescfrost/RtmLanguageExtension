@@ -113,8 +113,12 @@
 					"match": "(?:\\b|_\\K)(DOWN|ERASE|CR|BACK|BEEP|CLEAR|LEFT|RIGHT|TABSTOP|UP|FLASH|NOFLASH|HI|LO|KEYED|NOABORT|REV|NOREV|UND|NOUND)(?=\\b|_)(?!\\.)"
 				},
 				{
+					"name": "support.variable.inbuilt.rtm",
+					"match": "@[0-4AB](?=\\b|_)"
+				},
+				{
 					"name": "support.variable.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(@[0-4AB]|[WFHG][0-9]?\\$[a-zA-Z][@a-zA-Z0-9.]*)(?=\\b|_)"
+					"match": "[WFHG][0-9]?\\$[a-zA-Z][@a-zA-Z0-9.]*"
 				},
 				{
 					"match": "^\\s*([A-Z][A-Z0-9.]*(\\.[A-Z][A-Z0-9.]*)*)\\s+(PROC)(?=\\s*\\()",
