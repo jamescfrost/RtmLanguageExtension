@@ -122,6 +122,10 @@
 					"match": "^\\s+([A-Z][A-Z0-9_]*(\\.[A-Z][A-Z0-9_]*)*)(?=\\s+[AXNUSFZDC])"
 				},
 				{
+					"name": "variable.other.field.rtm",
+					"match": "^\\s+([A-Z][A-Z0-9_]*(\\.[A-Z][A-Z0-9_]*)*)(?=\\s+\\[)"
+				},
+				{
 					"name": "support.type.alphanumeric.rtm",
 					"match": "(?<=\\s)[AX]\\d+\\b"
 				},
