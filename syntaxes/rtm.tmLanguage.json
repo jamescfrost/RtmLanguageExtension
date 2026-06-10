@@ -9,6 +9,9 @@
 			"include": "#data-area"
 		},
 		{
+			"include": "#constants"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -44,7 +47,7 @@
 				},
 				{
 					"name": "keyword.control.condition.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(IF|THEN|ELSE|AND|OR|DIE)(?=\\b|_)(?!\\.)"
+					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(IF|THEN|ELSE|AND|OR)(?=\\b|_)(?!\\.)"
 				},
 				{
 					"name": "keyword.directive.rtm",
@@ -80,7 +83,7 @@
 				},
 				{
 					"name": "support.function.io.rtm",
-					"match": "\\b(ALTSCR|DISCARD|ERROR|RC|TRUNC|WAIT|VID|IN|INFLD|INOPT|SETOPT|VALID|OUT|SETERR|FIXERRS|OUTIF|OUTIMM|OUTONLY)(?=\\s*\\()"
+					"match": "\\b(ALTSCR|DISCARD|ERROR|RC|TRUNC|WAIT|VID|IN|INFLD|INOPT|SETOPT|VALID|OUT|SETERR|FIXERRS|OUTIF|OUTIMM|OUTONLY|DIE)(?=\\s*\\()"
 				}
 			]
 		},
