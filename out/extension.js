@@ -29,7 +29,7 @@ const vscode = __importStar(require("vscode"));
 const node_1 = require("vscode-languageclient/node");
 let client;
 function activate(context) {
-    const serverDll = path.resolve(context.extensionPath, '..', 'RtmLanguageServer', 'src', 'RtmLanguageServer', 'bin', 'Debug', 'net10.0', 'RtmLanguageServer.dll');
+    const serverDll = path.resolve(context.extensionPath, '..', 'RtmLanguageServer', 'src', 'RtmLanguageServer.App', 'bin', 'Debug', 'net10.0', 'rtm-language-server.dll');
     const serverOptions = {
         command: 'dotnet',
         args: [serverDll]

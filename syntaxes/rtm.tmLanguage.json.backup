@@ -1,0 +1,137 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "RTM",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#data-area"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.rtm",
+					"match": "^\\*.*$"
+				},
+				{
+					"name": "comment.block.rtm",
+					"match": "<<.*?(>>|$)"
+				},
+				{
+					"name": "comment.block.header.rtm",
+					"match": "(?<=^RTM\\b).*?$"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.reserved.rtm",
+					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(RTM|OVERLAY|PROC|RETURN|ENDPROC|QUITZUG)(?=\\b|_)(?!\\.)"
+				},
+				{
+					"name": "keyword.control.block.rtm",
+					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(DO|END|CASE|ENDCASE|PROC|ENDPROC|ALWAYS|NEVER|UNTIL|WHILE|REPEAT|EXIT)(?=\\b|_)(?!\\.)"
+				},
+				{
+					"name": "keyword.control.condition.rtm",
+					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(IF|THEN|ELSE|AND|OR)(?=\\b|_)(?!\\.)"
+				},
+				{
+					"name": "keyword.dollar.rtm",
+					"match": "^(\\$(ENTRY|ABORT|DATA|DATA,SHARED|ENTRY|EXT|EXTDATA|EXTRACT|FILE|FILES|INCLUDE|LIVE|LIVEUSER|NAME|NEWCLUSTERS|OPT|PROG|RECORD|SCRNDATA|SNAPSHOT|TEST|TESTUSER|USERDATA))(?=\\b|_)(?!\\.)"
+				},
+				{
+					"name": "constant.language.io.rtm",
+					"match": "(?:\\b|_\\K)(DOWN|ERASE|CR|BACK|BEEP|CLEAR|LEFT|RIGHT|TABSTOP|UP|FLASH|HI|LO|KEYED|NOABORT)(?=\\b|_)(?!\\.)"
+				},
+				{
+					"name": "support.variable.rtm",
+					"match": "(?<=\\b|_)(?<!\\.)B@[1234ABCR](?=\\b|_)"
+				},
+				{
+					"name": "support.function.files.rtm",
+					"match": "(?<=\\b|_)(?<!\\.)(?!\\.)(ALLOC|COPYR|INDEX|LOCK|NOGROUP|PACK|READ|READLOCK|REF|RELEASE|SEGPTR|TESTLOCK|UNLOCK|WRITE|UNPACK|BNUM|DELETE)(?=\\b|_)"
+				},
+				{
+					"name": "support.function.data.rtm",
+					"match": "(?<=\\b|_)(?<!\\.)(INIT|APPLY)(?=\\b|_)"
+				},
+				{
+					"name": "support.function.strings.rtm",
+					"match": "(?<=\\b|_)(?<!\\.)(CONCAT|CONVERT|EXT|LENGTH|MATCH|TRANSLATE|SUBSTR)(?=\\b|_)"
+				},
+				{
+					"name": "support.function.arithmetic.rtm",
+					"match": "(?<=\\b|_)(?<!\\.)(ABS|EXP2|MAX|MIN|RANDOM|REM)(?=\\b|_)"
+				},
+				{
+					"name": "support.function.io.rtm",
+					"match": "(?<=\\b|_)(?<!\\.)(ALTSCR|DISCARD|ERROR|RC|TRUNC|WAIT|VID|IN|INFLD|INOPT|SETOPT|VALID|OUT|SETERR|FIXERRS|OUTIF|OUTIMM|OUTONLY)(?=\\b|_)"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.rtm",
+			"begin": "\"",
+			"end": "\""
+		},
+		"data-area": {
+			"begin": "(?<=^\\$DATA\\b)",
+			"end": "(?=^\\$)",
+			"patterns": [
+				{
+					"include": "#comments"
+				},
+				{
+					"name": "support.type.alphanumeric.rtm",
+					"match": "(?<=\\s)[AX]\\d+\\b"
+				},
+				{
+					"name": "support.type.numeric.rtm",
+					"match": "(?<=\\s)[NUSFZ][BLP\\-]*\\d+(\\.\\d+)?\\b"
+				},
+				{
+					"name": "support.type.date.rtm",
+					"match": "(?<=\\s)D[AUEFDMYNHBL]+\\b"
+				},
+				{
+					"name": "support.type.codestring.rtm",
+					"begin": "(?<=\\s)(?=C\\^)",
+					"end": "\\^{2}",
+					"patterns": [
+						{
+							"include": "#comments"
+						},
+						{
+							"match": "(\\^)(\\w+)(?=\\^)",
+							"captures": {
+								"2": {
+									"name": "constant.numeric.rtm"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.rtm",
+					"match": "\\b(?<![\\.@])\\d+\\b(?!\\.)"
+				}
+			]
+		}
+	},
+	"scopeName": "source.rtm"
+}

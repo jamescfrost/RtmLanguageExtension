@@ -44,39 +44,43 @@
 				},
 				{
 					"name": "keyword.control.condition.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(IF|THEN|ELSE|AND|OR)(?=\\b|_)(?!\\.)"
+					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(IF|THEN|ELSE|AND|OR|DIE)(?=\\b|_)(?!\\.)"
 				},
 				{
-					"name": "keyword.dollar.rtm",
-					"match": "^(\\$(ENTRY|ABORT|DATA|DATA,SHARED|ENTRY|EXT|EXTDATA|EXTRACT|FILE|FILES|INCLUDE|LIVE|LIVEUSER|NAME|NEWCLUSTERS|OPT|PROG|RECORD|SCRNDATA|SNAPSHOT|TEST|TESTUSER|USERDATA))(?=\\b|_)(?!\\.)"
+					"name": "keyword.directive.rtm",
+					"match": "^(\\$(ENTRY|NAME|FILES|DATA|EXTDATA|SCRNDATA|USERDATA|EXT|PROG|ABORT|INCLUDESTART|INCLUDEEND|INCLUDE|END))(?=\\b|_)(?!\\.)"
 				},
 				{
-					"name": "constant.language.io.rtm",
+					"name": "keyword.operator.rtm",
+					"match": "(_(?=\\s)|\\+\\+|--|\\+_|&|!|%|<:|:>|#|<=|>=|//|/:|\\+|-|\\*|/|=|<|>)"
+				},
+				{
+					"name": "constant.language.rtm",
 					"match": "(?:\\b|_\\K)(DOWN|ERASE|CR|BACK|BEEP|CLEAR|LEFT|RIGHT|TABSTOP|UP|FLASH|HI|LO|KEYED|NOABORT)(?=\\b|_)(?!\\.)"
 				},
 				{
 					"name": "support.variable.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)B@[1234ABCR](?=\\b|_)"
+					"match": "(?<=\\b|_)(?<!\\.)(@[0-4AB]|[WFHG][0-9]?\\$[a-zA-Z][@a-zA-Z0-9.]*)(?=\\b|_)"
 				},
 				{
 					"name": "support.function.files.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(?!\\.)(ALLOC|COPYR|INDEX|LOCK|NOGROUP|PACK|READ|READLOCK|REF|RELEASE|SEGPTR|TESTLOCK|UNLOCK|WRITE|UNPACK|BNUM|DELETE)(?=\\b|_)"
+					"match": "\\b(ALLOC|COPYR|INDEX|LOCK|NOGROUP|PACK|READ|READLOCK|REF|RELEASE|SEGPTR|TESTLOCK|UNLOCK|WRITE|UNPACK|BNUM|DELETE)(?=\\s*\\()"
 				},
 				{
 					"name": "support.function.data.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(INIT|APPLY)(?=\\b|_)"
+					"match": "\\b(INIT|APPLY)(?=\\s*\\()"
 				},
 				{
 					"name": "support.function.strings.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(CONCAT|CONVERT|EXT|LENGTH|MATCH|TRANSLATE|SUBSTR)(?=\\b|_)"
+					"match": "\\b(CONCAT|CONVERT|EXT|LENGTH|MATCH|TRANSLATE|SUBSTR)(?=\\s*\\()"
 				},
 				{
 					"name": "support.function.arithmetic.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(ABS|EXP2|MAX|MIN|RANDOM|REM)(?=\\b|_)"
+					"match": "\\b(ABS|EXP2|MAX|MIN|RANDOM|REM)(?=\\s*\\()"
 				},
 				{
 					"name": "support.function.io.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(ALTSCR|DISCARD|ERROR|RC|TRUNC|WAIT|VID|IN|INFLD|INOPT|SETOPT|VALID|OUT|SETERR|FIXERRS|OUTIF|OUTIMM|OUTONLY)(?=\\b|_)"
+					"match": "\\b(ALTSCR|DISCARD|ERROR|RC|TRUNC|WAIT|VID|IN|INFLD|INOPT|SETOPT|VALID|OUT|SETERR|FIXERRS|OUTIF|OUTIMM|OUTONLY)(?=\\s*\\()"
 				}
 			]
 		},

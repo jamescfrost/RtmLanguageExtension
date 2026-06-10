@@ -15,11 +15,11 @@ export function activate(context: vscode.ExtensionContext) {
     '..',
     'RtmLanguageServer',
     'src',
-    'RtmLanguageServer',
+    'RtmLanguageServer.App',
     'bin',
     'Debug',
     'net10.0',
-    'RtmLanguageServer.dll'
+    'rtm-language-server.dll'
   );
 
   const serverOptions: ServerOptions = {
