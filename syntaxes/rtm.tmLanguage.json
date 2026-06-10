@@ -105,6 +105,10 @@
 					"match": "(_(?=\\s)|\\+\\+|--|\\+_|&|!|%|<:|:>|#|<=|>=|//|/:|\\+|-|\\*|/|=|<|>)"
 				},
 				{
+					"name": "constant.language.data.rtm",
+					"match": "(?<!\\.)\\b(FILL)\\b(?!\\.)"
+				},
+				{
 					"name": "constant.language.rtm",
 					"match": "(?:\\b|_\\K)(DOWN|ERASE|CR|BACK|BEEP|CLEAR|LEFT|RIGHT|TABSTOP|UP|FLASH|NOFLASH|HI|LO|KEYED|NOABORT|REV|NOREV|UND|NOUND)(?=\\b|_)(?!\\.)"
 				},
@@ -196,6 +200,10 @@
 			"patterns": [
 				{
 					"include": "#comments"
+				},
+				{
+					"name": "constant.language.data.rtm",
+					"match": "(?<!\\.)\\b(FILL)\\b(?!\\.)"
 				},
 				{
 					"name": "variable.other.field.rtm",
