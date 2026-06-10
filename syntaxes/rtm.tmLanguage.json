@@ -6,6 +6,12 @@
 			"include": "#comments"
 		},
 		{
+			"include": "#files-area"
+		},
+		{
+			"include": "#ext-area"
+		},
+		{
 			"include": "#data-area"
 		},
 		{
@@ -51,6 +57,44 @@
 				{
 					"name": "keyword.control.condition.rtm",
 					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(IF|THEN|ELSE|AND|OR)(?=\\b|_)(?!\\.)"
+				},
+				{
+					"match": "^\\s*(OVERLAY)\\s+([A-Z][A-Z0-9.]*(\\.[A-Z][A-Z0-9.]*)*)",
+					"captures": {
+						"1": {
+							"name": "keyword.reserved.rtm"
+						},
+						"2": {
+							"name": "entity.name.type.rtm"
+						}
+					}
+				},
+				{
+					"match": "^(\\$ENTRY)\\s+([A-Z][A-Z0-9.]*(\\.[A-Z][A-Z0-9.]*)*)",
+					"captures": {
+						"1": {
+							"name": "keyword.directive.rtm"
+						},
+						"2": {
+							"name": "entity.name.type.rtm"
+						}
+					}
+				},
+				{
+					"match": "^(\\$NAME)\\s+.*$",
+					"captures": {
+						"1": {
+							"name": "keyword.directive.rtm"
+						}
+					}
+				},
+				{
+					"match": "^(\\$INCLUDE)\\s+.*$",
+					"captures": {
+						"1": {
+							"name": "keyword.directive.rtm"
+						}
+					}
 				},
 				{
 					"name": "keyword.directive.rtm",
@@ -109,6 +153,42 @@
 			"name": "string.quoted.double.rtm",
 			"begin": "\"",
 			"end": "\""
+		},
+		"files-area": {
+			"begin": "^(\\$FILES)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.directive.rtm"
+				}
+			},
+			"end": "(?=^\\$)",
+			"patterns": [
+				{
+					"include": "#comments"
+				},
+				{
+					"name": "entity.name.type.rtm",
+					"match": "^\\s+([A-Z][A-Z0-9.]*(\\.[A-Z][A-Z0-9.]*)*)"
+				}
+			]
+		},
+		"ext-area": {
+			"begin": "^(\\$EXT)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.directive.rtm"
+				}
+			},
+			"end": "(?=^\\$)",
+			"patterns": [
+				{
+					"include": "#comments"
+				},
+				{
+					"name": "entity.name.type.rtm",
+					"match": "^\\s+([A-Z][A-Z0-9.]*(\\.[A-Z][A-Z0-9.]*)*)"
+				}
+			]
 		},
 		"data-area": {
 			"begin": "(?<=^\\$DATA\\b)",
