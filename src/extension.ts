@@ -28,7 +28,10 @@ export function activate(context: vscode.ExtensionContext) {
   };
 
   const clientOptions: LanguageClientOptions = {
-    documentSelector: [{ scheme: 'file', language: 'rtm' }]
+    documentSelector: [{ scheme: 'file', language: 'rtm' }],
+    synchronize: {
+      fileEvents: vscode.workspace.createFileSystemWatcher('**/*.rtm')
+    }
   };
 
   client = new LanguageClient(
