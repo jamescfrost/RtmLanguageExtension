@@ -16,6 +16,9 @@
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#field-references"
 		}
 	],
 	"repository": {
@@ -59,16 +62,31 @@
 				},
 				{
 					"name": "constant.language.rtm",
-					"match": "(?:\\b|_\\K)(DOWN|ERASE|CR|BACK|BEEP|CLEAR|LEFT|RIGHT|TABSTOP|UP|FLASH|HI|LO|KEYED|NOABORT)(?=\\b|_)(?!\\.)"
+					"match": "(?:\\b|_\\K)(DOWN|ERASE|CR|BACK|BEEP|CLEAR|LEFT|RIGHT|TABSTOP|UP|FLASH|NOFLASH|HI|LO|KEYED|NOABORT|REV|NOREV|UND|NOUND)(?=\\b|_)(?!\\.)"
 				},
 				{
 					"name": "support.variable.rtm",
 					"match": "(?<=\\b|_)(?<!\\.)(@[0-4AB]|[WFHG][0-9]?\\$[a-zA-Z][@a-zA-Z0-9.]*)(?=\\b|_)"
 				},
 				{
-					"name": "support.function.files.rtm",
-					"match": "\\b(ALLOC|COPYR|INDEX|LOCK|NOGROUP|PACK|READ|READLOCK|REF|RELEASE|SEGPTR|TESTLOCK|UNLOCK|WRITE|UNPACK|BNUM|DELETE)(?=\\s*\\()"
+					"match": "^\\s*([A-Z][A-Z0-9_]*(\\.[A-Z][A-Z0-9_]*)*)\\s+(PROC)(?=\\s*\\()",
+					"captures": {
+						"1": {
+							"name": "entity.name.function.rtm"
+						},
+						"3": {
+							"name": "keyword.reserved.rtm"
+						}
+					}
 				},
+				{
+					"name": "support.function.user.rtm",
+					"match": "\\b([A-Z][A-Z0-9_]*(\\.[A-Z][A-Z0-9_]*)*)(?=\\s*\\()"
+				},
+					{
+						"name": "support.function.files.rtm",
+						"match": "\\b(ALLOC|COPYR|INDEX|LOCK|NOGROUP|PACK|READ|READLOCK|REF|RELEASE|SEGPTR|TESTLOCK|UNLOCK|WRITE|UNPACK|BNUM|DELETE)(?=\\s*\\()"
+					},
 				{
 					"name": "support.function.data.rtm",
 					"match": "\\b(INIT|APPLY)(?=\\s*\\()"
@@ -98,6 +116,10 @@
 			"patterns": [
 				{
 					"include": "#comments"
+				},
+				{
+					"name": "variable.other.field.rtm",
+					"match": "^\\s+([A-Z][A-Z0-9_]*(\\.[A-Z][A-Z0-9_]*)*)(?=\\s+[AXNUSFZDC])"
 				},
 				{
 					"name": "support.type.alphanumeric.rtm",
@@ -136,6 +158,14 @@
 				{
 					"name": "constant.numeric.rtm",
 					"match": "\\b(?<![\\.@])\\d+\\b(?!\\.)"
+				}
+			]
+		},
+		"field-references": {
+			"patterns": [
+				{
+					"name": "variable.other.field.rtm",
+					"match": "\\b([A-Z][A-Z0-9_]*(\\.[A-Z][A-Z0-9_]*)*)\\b"
 				}
 			]
 		}
