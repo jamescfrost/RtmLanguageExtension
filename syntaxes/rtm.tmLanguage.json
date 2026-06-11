@@ -48,11 +48,11 @@
 			"patterns": [
 				{
 					"name": "keyword.reserved.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(RTM|OVERLAY|PROC|RETURN|ENDPROC|QUITZUG)(?=\\b|_)(?!\\.)"
+					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(RTM|OVERLAY|PROC|ENDPROC|QUITZUG)(?=\\b|_)(?!\\.)"
 				},
 				{
 					"name": "keyword.control.block.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(DO|END|CASE|ENDCASE|PROC|ENDPROC|ALWAYS|NEVER|UNTIL|WHILE|REPEAT|EXIT)(?=\\b|_)(?!\\.)"
+					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(DO|END|CASE|ENDCASE|PROC|ENDPROC|ALWAYS|NEVER|UNTIL|WHILE|REPEAT|EXIT|RETURN)(?=\\b|_)(?!\\.)"
 				},
 				{
 					"name": "keyword.control.condition.rtm",
@@ -105,10 +105,6 @@
 					"match": "(_(?=\\s)|\\+\\+|--|\\+_|&|!|%|<:|:>|#|<=|>=|//|/:|\\+|-|\\*|/|=|<|>)"
 				},
 				{
-					"name": "constant.language.data.rtm",
-					"match": "(?<!\\.)\\b(FILL)\\b(?!\\.)"
-				},
-				{
 					"name": "constant.language.rtm",
 					"match": "(?:\\b|_\\K)(DOWN|ERASE|CR|BACK|BEEP|CLEAR|LEFT|RIGHT|TABSTOP|UP|FLASH|NOFLASH|HI|LO|KEYED|NOABORT|REV|NOREV|UND|NOUND)(?=\\b|_)(?!\\.)"
 				},
@@ -153,7 +149,11 @@
 				},
 				{
 					"name": "support.function.io.rtm",
-					"match": "\\b(ALTSCR|DISCARD|ERROR|RC|TRUNC|WAIT|VID|IN|INFLD|INOPT|SETOPT|VALID|OUT|SETERR|FIXERRS|OUTIF|OUTIMM|OUTONLY|DIE)(?=\\s*\\()"
+					"match": "\\b(DISCARD|ERROR|RC|TRUNC|WAIT|VID|IN|INFLD|INOPT|SETOPT|VALID|OUT|SETERR|OUTIF|OUTIMM|DIE)(?=\\s*\\()"
+				},
+				{
+					"name": "keyword.language.rtm",
+					"match": "(?:\\b|_\\K)(ALTSCR|OUT|OUTONLY|FIXERRS)(?=\\b|_)(?!\\.)"
 				}
 			]
 		},
@@ -261,7 +261,11 @@
 			"patterns": [
 				{
 					"name": "variable.other.field.rtm",
-					"match": "\\b([A-Z][A-Z0-9_]*(\\.[A-Z][A-Z0-9_]*)*)\\b"
+					"match": "([A-Z][A-Z0-9]*(\\.[A-Z][A-Z0-9]*)*)"
+				},
+				{
+					"name": "variable.other.datafile.rtm",
+					"match": "(\\$[A-Z][A-Z0-9]*(\\.[A-Z][A-Z0-9]*)*)"
 				}
 			]
 		}
