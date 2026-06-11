@@ -18,6 +18,9 @@
 			"include": "#constants"
 		},
 		{
+			"include": "#parameter-keywords"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -254,6 +257,43 @@
 				{
 					"name": "constant.numeric.rtm",
 					"match": "\\b(?<![\\.@])\\d+\\b(?!\\.)"
+				}
+			]
+		},
+		"parameter-keywords": {
+			"patterns": [
+				{
+					"name": "meta.function-call.index.rtm",
+					"begin": "\\b(INDEX)\\s*(\\()",
+					"beginCaptures": {
+						"1": {
+							"name": "support.function.files.rtm"
+						},
+						"2": {
+							"name": "punctuation.section.parens.begin.rtm"
+						}
+					},
+					"end": "\\)",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.parens.end.rtm"
+						}
+					},
+					"patterns": [
+						{
+							"name": "keyword.parameterid.rtm",
+							"match": "@?(?:KEY|REC|RECPTR|ALTIDX)(?=\\s*=)"
+						},
+						{
+							"include": "#strings"
+						},
+						{
+							"include": "#constants"
+						},
+						{
+							"include": "#field-references"
+						}
+					]
 				}
 			]
 		},
