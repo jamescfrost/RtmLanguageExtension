@@ -1,9 +1,9 @@
 {
-  "name": "rtm",
+  "name": "rtm-language-support",
   "displayName": "RTM Language Support",
   "description": "Language support for RTM (Runtime Macro) files with syntax highlighting, IntelliSense, and navigation",
   "version": "0.1.0",
-  "publisher": "James Frost",
+  "publisher": "",
   "repository": {
     "type": "git",
     "url": ""
