@@ -1,8 +1,13 @@
 {
   "name": "rtm",
   "displayName": "RTM Language Support",
-  "description": "RTM Language Support",
-  "version": "0.0.1",
+  "description": "Language support for RTM (Runtime Macro) files with syntax highlighting, IntelliSense, and navigation",
+  "version": "0.1.0",
+  "publisher": "James Frost",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "engines": {
     "vscode": "^1.120.0"
   },
@@ -14,8 +19,11 @@
     "onLanguage:rtm"
   ],
   "scripts": {
+    "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "contributes": {
     "languages": [
@@ -45,6 +53,7 @@
   "devDependencies": {
     "@types/node": "^25.9.1",
     "@types/vscode": "^1.120.0",
+    "@vscode/vsce": "^3.2.1",
     "typescript": "^5.4.5"
   }
 }

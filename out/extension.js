@@ -29,13 +29,16 @@ const vscode = __importStar(require("vscode"));
 const node_1 = require("vscode-languageclient/node");
 let client;
 function activate(context) {
-    const serverDll = path.resolve(context.extensionPath, '..', 'RtmLanguageServer', 'src', 'RtmLanguageServer.App', 'bin', 'Debug', 'net10.0', 'rtm-language-server.dll');
+    const serverDll = path.join(context.extensionPath, 'server', 'rtm-language-server.dll');
     const serverOptions = {
         command: 'dotnet',
         args: [serverDll]
     };
     const clientOptions = {
-        documentSelector: [{ scheme: 'file', language: 'rtm' }]
+        documentSelector: [{ scheme: 'file', language: 'rtm' }],
+        synchronize: {
+            fileEvents: vscode.workspace.createFileSystemWatcher('**/*.rtm')
+        }
     };
     client = new node_1.LanguageClient('rtmLanguageServer', 'RTM Language Server', serverOptions, clientOptions);
     const status = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);

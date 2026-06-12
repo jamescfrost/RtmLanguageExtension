@@ -2,3 +2,10 @@
 .vscode-test/**
 .gitignore
 vsc-extension-quickstart.md
+.git/**
+.gitattributes
+src/**
+tsconfig.json
+node_modules/**
+*.vsix
+.eslintrc.json

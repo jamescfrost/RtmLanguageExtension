@@ -10,15 +10,9 @@ import {
 let client: LanguageClient | undefined;
 
 export function activate(context: vscode.ExtensionContext) {
-  const serverDll = path.resolve(
+  const serverDll = path.join(
     context.extensionPath,
-    '..',
-    'RtmLanguageServer',
-    'src',
-    'RtmLanguageServer.App',
-    'bin',
-    'Debug',
-    'net10.0',
+    'server',
     'rtm-language-server.dll'
   );
 
