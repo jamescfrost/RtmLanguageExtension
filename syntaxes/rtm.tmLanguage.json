@@ -55,7 +55,7 @@
 				},
 				{
 					"name": "keyword.control.block.rtm",
-					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(DO|END|CASE|ENDCASE|PROC|ENDPROC|ALWAYS|NEVER|UNTIL|WHILE|REPEAT|EXIT|RETURN)(?=\\b|_)(?!\\.)"
+					"match": "(?<=\\b|_)(?<!\\.)(?<!\\.)(DO|END|CASE|ENDCASE|ALWAYS|NEVER|UNTIL|WHILE|REPEAT|EXIT|RETURN)(?=\\b|_)(?!\\.)"
 				},
 				{
 					"name": "keyword.control.condition.rtm",
